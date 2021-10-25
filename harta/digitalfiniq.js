@@ -115,6 +115,23 @@ map.addLayer(wallsImported);
 map.addLayer(pathsImported);
 entranceMarker = new L.Marker([39.91351259783837, 20.059624328713472], { icon: infoIcon }).bindPopup(entrancePopup, { maxHeight: 200, maxWidth: 200, closeOnClick: true }).addTo(map);
 
+testCircle = L.circle([39.91381644734087, 20.055112781752946], {
+    radius: 5
+}).addTo(map);
+
+//testCircle.bindTooltip("Your location", { permanent: true, direction: "bottom" });
+//testCircle.closeTooltip()
+
+
+
+testCircle.addEventListener('click', function () {
+
+        testCircle.bindTooltip("Your location", { permanent: true, direction: "bottom" });
+});
+
+
+
+//testCircle.bindTooltip("Your location", { permanent: false, direction: "bottom" })
 
 var english = true;
 var entranceMarkerAL;
@@ -212,14 +229,25 @@ map.on('popupclose', function(e){
 });
 
 
+
+map.on('zoomstart', function (e) {
+    testCircle.unbindTooltip();
+});
+
+map.on('movestart', function (e) {
+    testCircle.unbindTooltip();
+});
+
 map.on('resize', function(e){
     map.closePopup();
     resized = true;
+    testCircle.unbindTooltip();
 });
 
 
 
 map.on('popupopen', function (event) {
+    testCircle.unbindTooltip();
     map.dragging.disable()
     map.removeControl(controls);
     map.touchZoom.disable();
