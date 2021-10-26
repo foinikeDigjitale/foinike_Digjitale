@@ -1,82 +1,62 @@
 ﻿<!doctype html>
- <!-- This says your file is in .html -->
 <html lang="en">
-<!-- This says your file is in English -->
-
 <head>
-    <!-- This opens your header. Your header is where different libraries and plugins are loaded -->
-    <title>Digital Phoenike</title> <!-- Put the title of your map here -->
+    <title>Digital Phoenike</title> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <!-- Load Leaflet files locally -->
-    <link rel="stylesheet" href="./leaflet/leaflet.css" /> <!--Put the path to the leaflet.css  you downloaded here -->
-    <script src="./leaflet/leaflet.js"></script>  <!-- Put the path to the leaflet.js you downloaded here -->
+    <link rel="stylesheet" href="./leaflet/leaflet.css" /> 
+    <script src="./leaflet/leaflet.js"></script> 
     <script src="./paths.js"></script>
-    <script src="./houseOfTwoPeristyles.js"></script>
+    <script src="./buildings.js"></script>
     <script src="./places.js"></script>
     <script src="./placesAL.js"></script>
     <script src="./walls.js"></script>
     <script src="./streets.js"></script>
     <script src="./entrance.js"></script>
-   
- 
     <style>
-
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             position: fixed;
         }
-
         #map {
             height: 100%;
             width: 100vw;
         }
-
         select {
             z-index: 1000;
             position: absolute;
             bottom: 35px;
             left: 1px;
             padding: 5px;
-            background: black;
             color: white;
             font-size: 18px;
         }
     </style>
-
-
     <style type="text/css" media="screen">
         html {
             -webkit-text-size-adjust: none;
             touch-action: none; /*prevent user scaling*/
         }
     </style>
-
 </head>
-
-
-<!-- In the body of the code, you need to create the division on the page for your map and call the map.js file you will make next -->
 <body>
     <div id="map">
         <select id="languages" style="border: 2px solid white; background: rgba(94, 8, 11, .8); border-radius: 6px">
             <option value="en">English</option>
-            <option value="al">Albanian</option>
+            <option value="al">Shqip</option>
         </select>
-    </div> <!--set the size of your map -->
-    <script type="text/javascript" src="digitalfiniq.js"></script> <!--call the javascript file for your map -->
+    </div>
+    <script type="text/javascript" src="digitalfiniq.js"></script>
     <script>document
             .getElementById('languages')
             .addEventListener('change', event => {
                 const language = event.target.value;
                 changeLanguage(language);
-            });</script>
-
-
+                updateLocationLanguage(language);
+            });
+    </script>
 </body>
-
-
 </html>
 
